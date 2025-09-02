@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markdown 展示</title>
+    <title>Markdown 渲染页面</title>
+    <!-- 引入Marked.js库来解析Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
@@ -15,29 +17,40 @@
             padding: 20px;
         }
         
+        #markdown-content {
+            margin-bottom: 80px;
+        }
+        
         #back-button {
             position: fixed;
             bottom: 20px;
             right: 20px;
             padding: 10px 20px;
             background-color: transparent;
-            color: white;
-            border: 2px solid white;
+            color: #fff;
+            border: 2px solid #fff;
             border-radius: 5px;
             cursor: pointer;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
             font-size: 16px;
             z-index: 1000;
         }
+        
         #back-button:hover {
             background-color: rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
 <body>
-    <pre id="markdown-content">
-    </pre>
-### 集合者：KX_dw｜查询者：aaa1287
+    <div id="markdown-content">
+        <!-- Markdown内容将在这里渲染显示 -->
+    </div>
+
+    <button id="back-button" onclick="goBack()">返回</button>
+
+    <script>
+        // 您的Markdown内容
+        const markdownText = `### 集合者：KX_dw｜查询者：aaa1287
 ### 公会：生存圈T0.5剑岩公会、喷系圈T1武安公会
 ### 夏天九族户籍合集，全网最全
 
@@ -158,9 +171,11 @@
 被告：夏耀，男，1990年7月16日出生，汉族，江西省上饶市广丰区人，住江西省上饶市广丰区，
 本院认为，原告的撤诉申请符合法律规定。依照《中华人民共和国民事诉讼法》第一百四十五条之规定，裁定如下：
 准许原告中国建设银行股份有限公司上饶市分行撤诉。
-案件受理费460元，减半收取230元，由原告负担。
-    <button id="back-button" onclick="goBack()">返回</button>
-    <script>
+案件受理费460元，减半收取230元，由原告负担。`;
+
+        // 渲染Markdown内容
+        document.getElementById('markdown-content').innerHTML = marked.parse(markdownText);
+        
         function goBack() {
             // 这里可以设置您想要跳转的URL
             window.location.href = "https://example.com";
