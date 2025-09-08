@@ -6,7 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-    <div id="markdown-content">
+    <div id="markdown-content" style="display: none;">
         # Markdown示例
         
         ## 二级标题
@@ -27,6 +27,8 @@
         [链接示例](https://example.com)
     </div>
 
+    <div id="rendered-content"></div>
+
     <script>
         // 获取包含Markdown的div
         const markdownDiv = document.getElementById('markdown-content');
@@ -37,8 +39,8 @@
         // 使用Marked.js解析Markdown
         const parsedHtml = marked.parse(markdownText);
         
-        // 将解析后的HTML放回div
-        markdownDiv.innerHTML = parsedHtml;
+        // 将解析后的HTML放入渲染区域
+        document.getElementById('rendered-content').innerHTML = parsedHtml;
     </script>
 </body>
 </html>
