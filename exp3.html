@@ -1,46 +1,33 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Markdown显示</title>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-    <div id="markdown-content" style="display: none;">
-        # Markdown示例
-        
-        ## 二级标题
-        
-        这是一个简单的Markdown渲染页面。
-        
-        - 列表项1
-        - 列表项2
-        - 列表项3
-        
-        **加粗文本** 和 *斜体文本*
-        
-        `行内代码` 和 
-        ```
-        代码块
-        ```
-        
-        [链接示例](https://example.com)
-    </div>
-
-    <div id="rendered-content"></div>
-
     <script>
-        // 获取包含Markdown的div
-        const markdownDiv = document.getElementById('markdown-content');
+        // 直接在文档中写入解析后的Markdown
+        const markdownText = `# Markdown示例
         
-        // 获取div中的Markdown文本
-        const markdownText = markdownDiv.textContent;
-        
-        // 使用Marked.js解析Markdown
-        const parsedHtml = marked.parse(markdownText);
-        
-        // 将解析后的HTML放入渲染区域
-        document.getElementById('rendered-content').innerHTML = parsedHtml;
+## 二级标题
+
+这是一个简单的Markdown渲染页面。
+
+- 列表项1
+- 列表项2
+- 列表项3
+
+**加粗文本** 和 *斜体文本*
+
+\`行内代码\` 和 
+\`\`\`
+代码块
+\`\`\`
+
+[链接示例](https://example.com)`;
+
+        // 使用Marked.js解析Markdown并直接写入文档
+        document.write(marked.parse(markdownText));
     </script>
 </body>
 </html>
