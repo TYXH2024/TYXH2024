@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>全家户籍</title>
+    <title>Markdown显示</title>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         body {
-            background-color: black;
-            color: #EEE;
+            background-color: #222;
+            color: #999;
             font-family: "Microsoft YaHei", sans-serif;
             text-align: center;
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
             padding: 20px;
         }
+        /* 防止iOS将长数字识别为电话号码 */
+        a[href^="tel"] {
+            color: inherit !important;
+            text-decoration: none !important;
+            pointer-events: none !important;
+            cursor: default !important;
+        }
     </style>
+    <meta name="format-detection" content="telephone=no">
 </head>
 <body>
     <script>
@@ -146,4 +154,4 @@
         document.write(marked.parse(markdownText));
     </script>
 </body>
-</html
+</html>
